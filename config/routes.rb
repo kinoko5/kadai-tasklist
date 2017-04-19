@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'tasks/create'
+  get 'kadai_tasks/create'
 
-  get 'tasks/destroy'
+  get 'kadai_tasks/destroy'
 
   get 'users/index'
 
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
       get 'signup', to: 'users#new'
       resources :users, only: [:index, :show, :new, :create]
-      resources :tasks, only: [:create, :destroy]
+      resources :kadai_tasks, only: [:create, :destroy]
       #ここまで追加
       #resources :tasks
     

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418070458) do
+ActiveRecord::Schema.define(version: 20170419010148) do
+
+  create_table "kadai_tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_kadai_tasks_on_user_id", using: :btree
+  end
 
   create_table "microposts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content"
@@ -36,5 +44,6 @@ ActiveRecord::Schema.define(version: 20170418070458) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "kadai_tasks", "users"
   add_foreign_key "microposts", "users"
 end
