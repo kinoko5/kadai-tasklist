@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'kadai_tasks/create'
+  get 'tasks/create'
 
-  get 'kadai_tasks/destroy'
+  get 'tasks/destroy'
 
   get 'users/index'
 
@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'users/create'
 
   get 'toppages/index'
+  
+  get 'tasks/update'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     #Rails.application.routes.draw do
@@ -25,7 +27,7 @@ Rails.application.routes.draw do
 
       get 'signup', to: 'users#new'
       resources :users, only: [:index, :show, :new, :create]
-      resources :kadai_tasks, only: [:create, :destroy]
+      resources :tasks, only: [:create, :destroy ]
       #ここまで追加
       #resources :tasks
     
