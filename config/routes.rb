@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get 'users/show'
 
-  get 'users/new'
+  get 'users/new',to: 'tasks#new'
 
   get 'users/create'
 
@@ -27,8 +27,9 @@ Rails.application.routes.draw do
 
       get 'signup', to: 'users#new'
       resources :users, only: [:index, :show, :new, :create]
-      resources :tasks, only: [:create, :destroy ]
+      resources :tasks
       #ここまで追加
       #resources :tasks
-    
+      get 'tasks', to: 'taskss#index'
+      get 'tasks/:id/edit', to: 'tasks#edit'
 end

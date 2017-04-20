@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   def new
   end
+  
+  def show
+  end
 
   def create
     email = params[:session][:email].downcase

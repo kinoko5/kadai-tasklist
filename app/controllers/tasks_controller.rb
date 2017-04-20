@@ -60,7 +60,11 @@
 
 class TasksController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy, :update]
+  before_action :correct_user, only: [:destroy, :update, :show,:edit]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
+def edit
+  @task =Task.find(params[:id])
+end
 
   def create
     @task = current_user.tasks.build(task_params)
@@ -91,11 +95,21 @@ class TasksController < ApplicationController
       render :edit
     end
   end
+  
+  def show
+    @task =Task.find(params[:id])
+  
+  end
 
   private
 
   def task_params
-    params.require(:task).permit(:content)
+    params.require(:task).permit(:content, :title,:status)
+  end
+  
+  
+  def set_task
+    @task = Task.find(params[:id])
   end
   
   def correct_user
